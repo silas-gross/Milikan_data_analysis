@@ -65,22 +65,23 @@ void analysis(std::string fname) {
 				//	std::cout << k << std::endl;
 
 				//if(time==" ") continue;
-				if (l % 9 != 0) {
+				if (l % 3 != 0) {
 					l++;
 					continue;
 				}
-				//std::cout << time << std::endl;
+				std::cout << time << std::endl;
 
 				int m = 0;
 			
 					
-					if (time.compare("Total") == 0 ||time.compare("time")==0 ||time.compare(" ")) continue;
+					if (time.compare("Total") == 0 ||time.compare("time")==0 ) continue;
 					std::cout << time << std::endl;
 					std::stringstream full;
 					full.str(time);
 					while (std::getline(full, brokentime, ':')) {
 						int n = brokentime.find(".");
-						if (n == 0 || n == 1)continue;
+						std::cout << n << std::endl;
+						if (n == 0 || n == 1 ||n==-1)continue;
 						sec = brokentime.substr(n - 2, 2);
 						std::cout << "sec loaded" << std::endl;
 						milsec = brokentime.substr(n + 1, 2);
