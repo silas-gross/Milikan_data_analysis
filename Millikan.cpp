@@ -76,29 +76,32 @@ void analysis(std::string fname) {
 					
 					if (time.compare("Total") == 0 ||time.compare("time")==0 ||time.compare(" ")) continue;
 					std::cout << time << std::endl;
-					int n = time.find(".");
-					if (n == 0 || n == 1)continue;
-					sec = brokentime.substr(n - 2, 2);
-					std::cout << "sec loaded" << std::endl;
-					milsec = brokentime.substr(n + 1, 2);
-					l++;
+					std::stringstream full;
+					full.str(time);
+					while (std::getline(full, brokentime, ':')) {
+						int n = brokentime.find(".");
+						if (n == 0 || n == 1)continue;
+						sec = brokentime.substr(n - 2, 2);
+						std::cout << "sec loaded" << std::endl;
+						milsec = brokentime.substr(n + 1, 2);
+						l++;
 
-					if (i % 2 == 1 && i != 0) {
-						errorstream << "Time: \"" << sec << "\", milsec: \"" << milsec << "\"" << std::endl;
-						if (milsec.compare("") == 0 || time.compare("time") == 0) continue;
-						float temp1 = std::stof(sec);
-						std::cout << temp1 << std::endl;
-						float temp2 = std::stof(milsec);
-						temp1 = temp1 + 0.01*temp2;
-						int j = i;
-						//if (j % 2 == 1) continue;
-						t[j] = temp1;
-						//	std::cout << j << std::endl;
-				
-				}
+						if (i % 2 == 1 && i != 0) {
+							errorstream << "Time: \"" << sec << "\", milsec: \"" << milsec << "\"" << std::endl;
+							if (milsec.compare("") == 0 || time.compare("time") == 0) continue;
+							float temp1 = std::stof(sec);
+							std::cout << temp1 << std::endl;
+							float temp2 = std::stof(milsec);
+							temp1 = temp1 + 0.01*temp2;
+							int j = i;
+							//if (j % 2 == 1) continue;
+							t[j] = temp1;
+							//	std::cout << j << std::endl;
 
-					i++;
-				
+						}
+
+						i++;
+					}
 			}
 		}
 
