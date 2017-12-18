@@ -50,7 +50,7 @@ void analysis(std::string fname) {
 		while (std::getline(tbreak, time, ' '))
 		{
 		//	std::cout << k << std::endl;
-			if (k % 2 == 0) {
+			if (k % 3 == 0|| k%3==1) {
 				k++;
 				continue;
 			}
@@ -83,10 +83,12 @@ void analysis(std::string fname) {
 				{
 					//std::cout << temp << std::endl;
 					if (n % 2 == 0) time = temp;
-					time.erase(0, time.find_first_not_of('0'));
-					//std::cout<<time <<std::endl;
+					//time.erase(0, time.find_first_not_of('0'));
+					std::cout << time << std::endl;
 					if (n % 2 == 1)milsec = temp;
-					n++;
+					std::cout << milsec << std::endl;
+						n++;
+				}
 					if (i % 2 == 0) {
 						float temp1 = std::stof(time);
 						std::cout << temp1 << std::endl;
@@ -95,7 +97,7 @@ void analysis(std::string fname) {
 						int j = i - 2;
 						t[j] = temp1;
 						std::cout << j << std::endl;
-					}
+					
 				}
 
 				
