@@ -5,18 +5,19 @@
 #include <fstream>
 #include <iostream>
 #include <cstdio>
-#include "C:\root_v5.34.36\include\TH1.h"
+/*#include "C:\root_v5.34.36\include\TH1.h"
 #include "C:\root_v5.34.36\include\TLatex.h"
 #include "C:\root_v5.34.36\include\TPad.h"
 #include "C:\root_v5.34.36\include\TCanvas.h"
 #include "C:\root_v5.34.36\include\TLegend.h"
 #include "C:\root_v5.34.36\include\TString.h"
 #include "C:\root_v5.34.36\include\TFile.h"
+*/
 #include <math.h>
 #include <string>
 #include <sstream>
 #define PI 3.14159265358979324
-TFile* F;
+//TFile* F;
 void analysis(std::string fname) {
 	const char* name = fname.c_str();
 	std::string vs = fname + "_velocity";
@@ -26,10 +27,12 @@ void analysis(std::string fname) {
 	const char* aname = as.c_str();
 	const char* kname = ks.c_str();
 	int Volts = 0;
-	TH1F* h = new TH1F(name, name, 200, 0, 200);
-	TH1F* h1 = new TH1F(vname, vname, 200, 0, 200);
-	TH1F* h2 = new TH1F(aname, aname, 200, 0, 200);
-	TH1F* h3 = new TH1F(kname, kname, 200, 0, 200);
+	/*TH1F* h = new TH1F(name, name, 200, 0, 200);
+	TH1F* h1 = new TH1F(vname, vname, 20, 0, 1);
+	TH1F* h2 = new TH1F(aname, aname, 20, 0, 0.0003);
+	TH1F* h3 = new TH1F(kname, kname, 20, 0, 0.000001);
+	
+	*/
 	std::cout << "How many Volts?";
 	std::cin >> Volts;
 	std::cout << std::endl;
@@ -146,21 +149,21 @@ void analysis(std::string fname) {
 				outf << t[j] << ',' << v[j] << ',' << a[j] << ',' << ne[j] << ',' << k[j] << std::endl;
 			}
 
-			h->SetBinContent(j, ne[j]);
-			h1->SetBinContent(j, v[j]);
-			h2->SetBinContent(j, a[j]);
-			h3->SetBinContent(j, k[j]);
+	//		h->SetBinContent(j, ne[j]);
+	//		h1->Fill(v[j]);
+	//		h2->Fill( a[j]);
+	//		h3->Fill(k[j]);
 		}
 	}
-	h->Write();
-	h1->Write();
-	h2->Write();
-	h2->Write();
+//	h->Write();
+//	h1->Write();
+	//h2->Write();
+//	h3->Write();
 
 }
 int main()
 {
-	F = new TFile("millikan.root", "RECREATE");
+//	F = new TFile("millikan.root", "RECREATE");
 	std::string mf="";
 	std::cout << "More files?";
 	std::cin >> mf;
